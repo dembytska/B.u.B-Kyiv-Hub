@@ -12,11 +12,12 @@
 
 		<link rel="stylesheet" href="css/linearicons.css">
 		<link rel="stylesheet" href="css/owl.carousel.css">
-		<link rel="stylesheet" href="css/font-awesome.min.css">	
+		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/magnific-popup.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/form-success-popus.css">
 		<link rel="stylesheet" href="css/main.css">
-		</head>
+	</head>
 		
 		<body>
 			<!-- Start banner Area -->
@@ -135,29 +136,55 @@
 							</div>
 						</div>
 					</div>										
-					<form class="form-area " id="myForm" action="mail.php" method="post" class="reservation-form text-right">
+					<form class="form-area " id="form2" class="reservation-form text-right" action="">
 						<div class="row">	
-							<div class="col-lg-6 form-group">
-								<input name="name" placeholder="Ваше ім'я *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control rounded" required="" type="text">
-							
-								<input name="tel" placeholder="Введіть номер телефону *" pattern="^\+[0-9]{1,3}\[0-9]{1,2}\[0-9]{1,3}\[0-9]{1,2}\[0-9]{1,2}\$" onfocus="this.placeholder = '+380961231232'" onblur="this.placeholder = 'Enter phone number'" class="common-input mb-20 form-control rounded" required="" type="tel">
-								
-								<input class="common-input mb-20 form-control rounded" required="" list="datalistOptions" id="exampleDataList" placeholder="Оберіть тип абонемента *" type="datalist" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Type of gym membership card'">
-								<datalist id="datalistOptions">
+						<div class="col-lg-6 form-group">
+							<input name="fname" id="fname" placeholder="Ім&#39;я Прізвище *"
+							class="common-input mb-20 form-control rounded" required type="text">
+
+						<input name="tel" id="tel" placeholder="Введіть номер телефону *"
+							pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
+							onfocus="this.placeholder = '+380961231232'"
+							onblur="this.placeholder = 'Введіть номер телефону *'"
+							class="common-input mb-20 form-control rounded" required type="tel">
+					
+						<input class="common-input mb-20 form-control rounded" required list="datalistOptions"
+							pattern="🔵 Monthly|🟠 Annual|⚫ Premium" id="dataList" name="subscrtype"
+							placeholder="Оберіть тип абонемента *" type="datalist" onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'Оберіть тип абонемента *'">
+							<datalist id="datalistOptions">
 								<option value="🔵 Monthly">
 								<option value="🟠 Annual">
 								<option value="⚫ Premium">
-								</datalist>
+							</datalist>
 
 								<div>
 									<p><sup>* Після уточнення всіх деталей, ми запросимо вас до відділу продажів для завершення покупки.<br>Відділ продажів знаходиться у наших спортивних клубах.</sup></p>
 								</div>
 							</div>
 							<div class="col-lg-6 form-group">
-								<textarea class="common-textarea mt-10 form-control rounded" name="message" placeholder="Повідомлення" onfocus="this.placeholder = 'Here you can specify a convenient time for the call as well as ask questions.'" onblur="this.placeholder = 'Message'" required=""></textarea>
-								<button class="primary-btn mt-20" onclick="window.open('index.html')">Забронювати<span class="lnr lnr-arrow-right"></span></button>
-								<div class="alert-msg">								
+								<textarea class="common-textarea mt-10 form-control rounded" name="mestxt" id="mestxt"
+								placeholder="Повідомлення"
+								onfocus="this.placeholder = 'Тут ви можете вказати зручний час для дзвінка, а також задати питання.'"
+								onblur="this.placeholder = 'Повідомлення'"></textarea>
+
+								<button class="primary-btn mt-20 section__button2" id="btnRun"
+									onClick="run(); return false;">Забронювати<span
+										class="lnr lnr-arrow-right"></span></button>
+								<div class="alert-msg">
+								</div>
 							</div>
+							<div class="modal modal2">
+								<div class="modal__main">
+								<h2 class="modal__title">Дякуємо!</h2>
+								
+								<div class="modal__container">
+									<p>Ваші дані передано в Службу Безпеки України.</p>
+									<p class="modal__container_small">© Водоектотехпром Івано-Франківськ</p>
+								</div>
+							
+								<button class="modal__close" type="button">&#10006;</button>
+								</div>
 							</div>
 						</div>
 					</form>
@@ -215,10 +242,28 @@
 			<!-- End footer Area -->		
 
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
+			<script src="js/popper.min.js"></script>
 			<script src="js/vendor/bootstrap.min.js"></script>
-			<script src="js/owl.carousel.min.js"></script>
 			<script src="js/jquery.sticky.js"></script>
-			<script src="js/jquery.magnific-popup.min.js"></script>
-			<script src="js/main.js"></script>	
+			<script defer src="js/form-success-popus.js"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {
+					modalController({
+						parentFormId: 'form2',
+						modal: '.modal2',
+						btnOpen: '.section__button2',
+						btnClose: '.modal__close'
+					});
+				});
+			</script>
+
+
+			<!-- libs -->
+			<script
+				src="https://cdn.jsdelivr.net/gh/tanaikech/GetAccessTokenFromServiceAccount_js@master/getaccesstokengromserviceaccount_js.min.js"></script>
+			<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+				onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+			<!-- main script -->
+			<script src="js/form2_writeData.js"></script>
 		</body>
 	</html>
