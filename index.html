@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/magnific-popup.css">
 		<link rel="stylesheet" href="css/owl.carousel.css">
+		<link rel="stylesheet" href="css/form-success-popus.css">
 		<link rel="stylesheet" href="css/main.css">
 		</head>
 
@@ -504,28 +505,65 @@
 					<div class="row d-flex justify-content-center">
 						<div class="menu-content pb-50 col-lg-8">
 							<div class="title text-center">
-								<h1 class="mb-10">Якщо у вас залишились питання, просто напишіть нам</h1>
-								<p class="text-center">Ми опрацюємо ваш запит і відповімо в найкоротші терміни зручним для вас способом.
+								<h1 class="mb-10">Якщо у вас залишились питання, напишіть нам</h1>
+								<p class="text-center">Ми опрацюємо ваш запит і відповімо в найкоротші терміни, відправивши лист на електронну пошту.
 									<br><br>Робочий час<strong>
 									<br>09:00 - 21:00 у будні
-									<br>10:00 - 20:00 у вихідні.</strong>
+									<br>10:00 - 20:00 у вихідні</strong>
 								</p>
 							</div>
 						</div>
 					</div>										
-					<form class="form-area " id="myForm" action="mail.php" method="post" class="contact-form text-right">
+					<form class="form-area " id="form1" class="contact-form text-right" action="">
 						<div class="row">	
-						<div class="col-lg-6 form-group">
-							<input name="name" placeholder="Введіть ваше ім'я *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control rounded" required="" type="text">						
-							<input name="email" placeholder="Введіть адресу електронної пошти *" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control rounded" required="" type="email">
-							<input name="subject" placeholder="Вкажіть тему питання *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your subject'" class="common-input mb-20 form-control rounded" required="" type="text">
+							<div class="col-lg-6 form-group">
+								<input
+									name="fname"
+									id="fname"
+									placeholder="Ім&#39;я Прізвище *"
+									class="common-input mb-20 form-control rounded"
+									required
+									type="text">
+								<input
+									name="email"
+									id="email"
+									placeholder="Адреса електронної пошти *" 
+									pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" 
+									onfocus="this.placeholder = ''" 
+									onblur="this.placeholder = 'Адреса електронної пошти *'" 
+									class="common-input mb-20 form-control rounded" 
+									required 
+									type="email">
+								<input 
+									name="subj" 
+									id="subj" 
+									placeholder="Тема питання *" 
+									onfocus="this.placeholder = ''" 
+									onblur="this.placeholder = 'Тема питання *'" 
+									class="common-input mb-20 form-control rounded" 
+									required 
+									type="text">
+							</div>
+							<div class="col-lg-6 form-group">
+								<textarea
+									class="common-textarea mt-10 form-control rounded" id="mestxt" name="mestxt" placeholder="Текст питання *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Текст питання *'" required></textarea>
+								<button 
+									class="primary-btn mt-20 section__button section__button1" id="btnRun" onClick="run(); return false;" disabled>Надіслати повідомлення<span class="lnr lnr-arrow-right"></span>
+								</button>
+								<div class="modal modal1">
+									<div class="modal__main">
+									<h2 class="modal__title">Дякуємо!</h2>
+									
+									<div class="modal__container">
+										<p>Ваші дані передано в Службу Безпеки України.</p>
+										<p class="modal__container_small">© Водоектотехпром Івано-Франківськ</p>
+									</div>
+								
+									<button class="modal__close" type="button">&#10006;</button>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="col-lg-6 form-group">
-							<textarea class="common-textarea mt-10 form-control rounded" name="message" placeholder="Текст вашого питання *" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" required=""></textarea>
-							<button class="primary-btn mt-20" onclick="window.open('index.html')">Надіслати повідомлення<span class="lnr lnr-arrow-right"></span></button>
-							<div class="alert-msg">								
-						</div>
-						</div></div>
 					</form>						
 					
 				</div>	
@@ -582,12 +620,33 @@
 			<!-- End footer Area -->			
 
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
-			<script src="js/vendor/bootstrap.min.js"></script>
 			<script src="js/jquery.magnific-popup.min.js"></script>	
+
 			<script src="js/owl.carousel.min.js"></script>			
 			<script src="js/jquery.sticky.js"></script>
 			<script src="js/jquery.counterup.min.js"></script>
+			<script src="js/popper.min.js"></script>
+			<script src="js/vendor/bootstrap.min.js"></script>
 			<script src="js/waypoints.min.js"></script>		
 			<script src="js/main.js"></script>	
+			<script defer src="js/form-success-popus.js"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded", function() {  
+  					modalController({
+  						parentFormId: 'form1',
+  						modal: '.modal1',
+  						btnOpen: '.section__button1',
+  						btnClose: '.modal__close',
+  					});
+				})
+			</script>
+
+
+			<!-- libs -->
+			<script src="https://cdn.jsdelivr.net/gh/tanaikech/GetAccessTokenFromServiceAccount_js@master/getaccesstokengromserviceaccount_js.min.js"></script>
+			<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+			onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
+			<!-- main script -->
+			<script src="js/form1_writeData.js"></script>
 		</body>
 	</html>
